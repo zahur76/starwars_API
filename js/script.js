@@ -11,15 +11,14 @@ $(document).ready(function(){
 
         xhr.open("GET", url);
         xhr.send();
-    }
-    
+    }   
     
 
     $("#get-data").click(function(){
         let randomnum = Math.floor(Math.random() * 80);
         getData("https://swapi.dev/api/people/"+randomnum+"/", function(data){
+            console.log(typeof data)
             console.log(data)
-            console.log(data.name)
             $("#data1").html("Name: " + data.name);
             $("#data2").html("Height: " + data.height);
             $("#data3").html("Mass: " + data.mass);
@@ -27,6 +26,30 @@ $(document).ready(function(){
         })
         
     })
+
+    function getData2(url){
+        $.getJSON(url) 
+            .done(function(data){ 
+            console.log(typeof data)           
+            $("#data5").html("Name: " + data.name);
+            $("#data6").html("Height: " + data.height);
+            $("#data7").html("Mass: " + data.mass);
+            $("#data8").html("Hair-colour: " + data.hair_color);                     
+        })
+            .done(function(){
+                alert("success")
+            })
+            .fail(function(){
+                alert("fail")
+            })
+    } 
+        
+
+    $("#get-data2").click(function(){
+        let randomnum = Math.floor(Math.random() * 80);
+        getData2("https://swapi.dev/api/people/"+randomnum+"/")        
+    })
 })  
+
     
     
