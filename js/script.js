@@ -49,6 +49,26 @@ $(document).ready(function(){
         let randomnum = Math.floor(Math.random() * 80);
         getData2("https://swapi.dev/api/people/"+randomnum+"/")        
     })
+
+    const settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://matchilling-chuck-norris-jokes-v1.p.rapidapi.com/jokes/random",
+	"method": "GET",
+	"headers": {
+		"accept": "application/json",
+		"x-rapidapi-key": "aed50b0b81msh2bf20446b7367b9p1c7955jsnd11b07db7845",
+		"x-rapidapi-host": "matchilling-chuck-norris-jokes-v1.p.rapidapi.com"
+	}
+    };
+
+     $("#get-data3").click(function(){
+        $.ajax(settings).done(function (response) {
+            console.log(response);  
+            console.log(response.value);          
+            $("#data9").html(response.value);            
+        });
+    })
 })  
 
     
